@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Accounts.models import User, Faculty, HR
+from .models import User, Faculty, HR
 from django.contrib.auth import authenticate, password_validation
 
 from rest_framework.response import Response

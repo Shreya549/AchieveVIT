@@ -109,7 +109,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     USERNAME_FIELD = 'empid'
-    REQUIRED_FIELDS = ['name', 'email']
+    REQUIRED_FIELDS = ['name', 'email', 'empid']
 
     objects = UserManager()
 
@@ -132,7 +132,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Faculty(User, PermissionsMixin):
 
     USERNAME_FIELD = 'empid'
-    REQUIRED_FIELDS = ['name', 'email']
+    REQUIRED_FIELDS = ['name', 'email', 'empid']
 
     objects = FacultyManager()
 
@@ -143,7 +143,7 @@ class Faculty(User, PermissionsMixin):
 class HR(User, PermissionsMixin):
 
     USERNAME_FIELD = 'empid'
-    REQUIRED_FIELDS = ['name', 'email']
+    REQUIRED_FIELDS = ['name', 'email', 'empid']
 
     objects = HRManager()
 
