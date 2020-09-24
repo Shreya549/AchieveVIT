@@ -1,10 +1,14 @@
 # AchieveVIT
 Backend of a website to meet the needs of Faculties of VIT 
 
+#### API Documentation
+[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](https://documenter.getpostman.com/view/7941616/TVKFyFwb) 
+
  #### Instructions to run
 ```
 $ git clone https://github.com/Shreya549/AchieveVIT
-$ cd Achieve
+$ cd AchieveVIT
+$ pip install requirements.txt
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
