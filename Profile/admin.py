@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Faculty, HR
+from .models import FacultyProfile, HRProfile
 # Register your models here.
-admin.site.register(Faculty)
-admin.site.register(HR)
+admin.site.register(FacultyProfile)
+admin.site.register(HRProfile)
