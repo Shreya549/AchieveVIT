@@ -86,8 +86,8 @@ class HRManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
-    email = models.EmailField(db_index=True, unique=True)
-    empid = models.CharField(max_length = 5, unique = True)
+    email = models.EmailField(unique=True)
+    empid = models.CharField(max_length = 5, unique = True, db_index = True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
