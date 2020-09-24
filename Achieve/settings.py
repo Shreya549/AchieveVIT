@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'Accounts',
-    'Profile'
+    'Profile',
+    'Portfolio'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -1,6 +1,7 @@
 from django.db import models
 from Accounts.models import Faculty
 from uuid import uuid4
+import uuid
 # Create your models here.
 
 class Education(models.Model):
