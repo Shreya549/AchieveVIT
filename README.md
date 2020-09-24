@@ -3,8 +3,8 @@ Backend of a website to meet the needs of Faculties of VIT
 
  #### Instructions to run
 ```
-$ git clone https://github.com/Shreya549/fictional-giggle
-$ cd AchieveVIT
+$ git clone https://github.com/Shreya549/AchieveVIT
+$ cd Achieve
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py runserver
