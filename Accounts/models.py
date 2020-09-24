@@ -54,8 +54,8 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def get_by_natural_key(self, email):
-        return self.get(email=email)
+    def get_by_natural_key(self, empid):
+        return self.get(empid=empid)
 
 
 class FacultyManager(BaseUserManager):
@@ -119,7 +119,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         token = jwt.encode({
             'id': self.id,
             'exp': int(time.mktime(dt.timetuple()))
-        }, settings.SECRET_KEY, algorithm='HS256')
+        }, settings.SECRET_KEY, algorithm='HS512')
         return token.decode('utf-8')
 
     def natural_key(self):
