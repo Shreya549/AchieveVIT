@@ -77,7 +77,7 @@ class EducationRetrieveView(viewsets.ModelViewSet):
         fk = self.request.GET.get('empid')
         owner = FacultyProfile.objects.get(pk = fk).owner
         query = Education.objects.filter(owner = owner)
-        return query[0]
+        return query
 
 class WorkExperienceRetrieveView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
@@ -86,7 +86,7 @@ class WorkExperienceRetrieveView(viewsets.ModelViewSet):
     def get_queryset(self):
         fk = self.request.GET.get('empid')
         owner = FacultyProfile.objects.get(pk = fk).owner
-        query = WorkExperience.objects.get(owner = owner)
+        query = WorkExperience.objects.filter(owner = owner)
         return query
 
 class AchievementsRetrieveView(viewsets.ModelViewSet):
@@ -96,7 +96,7 @@ class AchievementsRetrieveView(viewsets.ModelViewSet):
     def get_queryset(self):
         fk = self.request.GET.get('empid')
         owner = FacultyProfile.objects.get(pk = fk).owner
-        query = Achievements.objects.get(owner = owner)
+        query = Achievements.objects.filter(owner = owner)
         return query
        
     
