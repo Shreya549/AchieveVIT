@@ -60,6 +60,7 @@ class ViewFeed(APIView):
                     edu = Achievements.objects.get(pk=fk)
                     print (edu)
                     owner = edu.owner
+                    print (owner)
                     name = FacultyProfile.objects.get(pk = owner).name
                     sub = name + " added an Achievement."
 
