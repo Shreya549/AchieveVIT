@@ -3,6 +3,7 @@ from rest_framework import viewsets, permissions, generics
 from .serializers import EducationSerializer, WorkExperienceSerializer, AchievementsSerializer
 from .models import Education, WorkExperience, Achievements
 from Feed.models import Feed
+from Profile.models import FacultyProfile
 
 # Create your views here.
 class EducationViewSet(viewsets.ModelViewSet):
@@ -73,8 +74,9 @@ class EducationRetrieveView(viewsets.ModelViewSet):
     serializer_class = EducationSerializer
 
     def get_queryset(self):
-        fk = self.request.GET.get('uuid')
-        query = Education.objects.get(owner = fk)
+        fk = self.request.GET.get('empid')
+        owner = FacultyProfile.objects.get(pk = fk).owner
+        query = Education.objects.get(owner = owner)
         return query
 
 class WorkExperienceRetrieveView(viewsets.ModelViewSet):
