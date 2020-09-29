@@ -49,8 +49,34 @@ class AchievementsViewSet(viewsets.ModelViewSet):
         kwargs['partial'] = True
         return self.update(request, *args, **kwargs)
 
+class EducationRetrieveView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = EducationSerializer
 
+    def get_queryset(self):
+        fk = self.request.GET.get('uuid')
+        query = Education.objects.get(owner = fk)
+        return query
 
+class WorkExperienceRetrieveView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = WorkExperienceSerializer
+
+    def get_queryset(self):
+        fk = self.request.GET.get('uuid')
+        query = WorkExperience.objects.get(owner = fk)
+        return query
+
+class AchievementsRetrieveView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AchievementsSerializer
+
+    def get_queryset(self):
+        fk = self.request.GET.get('uuid')
+        query = Achievements.objects.get(owner = fk)
+        return query
+       
+    
 
 
 
