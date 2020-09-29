@@ -75,20 +75,18 @@ class EducationRetrieveView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         fk = self.request.GET.get('empid')
-        print('1')
         owner = FacultyProfile.objects.get(pk = fk).owner
-        print ('2')
         query = Education.objects.filter(owner = owner)
-        print('3')
-        return query
+        return query[0]
 
 class WorkExperienceRetrieveView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = WorkExperienceSerializer
 
     def get_queryset(self):
-        fk = self.request.GET.get('uuid')
-        query = WorkExperience.objects.get(owner = fk)
+        fk = self.request.GET.get('empid')
+        owner = FacultyProfile.objects.get(pk = fk).owner
+        query = WorkExperience.objects.get(owner = owner)
         return query
 
 class AchievementsRetrieveView(viewsets.ModelViewSet):
@@ -96,8 +94,9 @@ class AchievementsRetrieveView(viewsets.ModelViewSet):
     serializer_class = AchievementsSerializer
 
     def get_queryset(self):
-        fk = self.request.GET.get('uuid')
-        query = Achievements.objects.get(owner = fk)
+        fk = self.request.GET.get('empid')
+        owner = FacultyProfile.objects.get(pk = fk).owner
+        query = Achievements.objects.get(owner = owner)
         return query
        
     
