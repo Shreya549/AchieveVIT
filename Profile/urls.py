@@ -10,5 +10,5 @@ router.register('hr', HRProfileView, basename="hr")
 urlpatterns = router.urls
 
 urlpatterns +=[
-    path('view/<uuid:pk>/', ProfileRetrieveView.as_view())
+    path('view/<int:pk>/', ProfileRetrieveView.as_view())
 ]
