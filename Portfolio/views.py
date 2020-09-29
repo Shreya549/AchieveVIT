@@ -78,7 +78,7 @@ class EducationRetrieveView(viewsets.ModelViewSet):
         print('1')
         owner = FacultyProfile.objects.get(pk = fk).owner
         print ('2')
-        query = Education.objects.get(owner = owner)
+        query = Education.objects.filter(owner = owner)
         print('3')
         return query
 
