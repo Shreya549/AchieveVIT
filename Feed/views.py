@@ -5,7 +5,7 @@ from rest_framework import viewsets, permissions, generics
 from .models import Feed
 from Portfolio.models import Education, WorkExperience, Achievements
 from Profile.models import FacultyProfile
-
+from Accounts.models import Faculty
 # Create your views here.
 class ViewFeed(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -26,7 +26,7 @@ class ViewFeed(APIView):
                     edu = Education.objects.get(pk=fk)
                     print ("Edu")
                     owner = edu.owner
-                    name = FacultyProfile.objects.get(pk = owner).name
+                    name = Faculty.objects.get(pk = owner).name
                     sub = name + " updated their Education."
 
                     json = {
@@ -43,7 +43,7 @@ class ViewFeed(APIView):
                     edu = WorkExperience.objects.get(pk=fk)
                     print(edu)
                     owner = edu.owner
-                    name = FacultyProfile.objects.get(pk = owner).name
+                    name = Faculty.objects.get(pk = owner).name
                     sub = name + " updated their Work Experience."
 
                     json = {
@@ -61,9 +61,9 @@ class ViewFeed(APIView):
                     print (edu)
                     owner = edu.owner
                     print (owner)
-                    name = FacultyProfile.objects.get(pk = owner).name
+                    name = Faculty.objects.get(pk = owner).name
                     sub = name + " added an Achievement."
-
+                    print (name)
                     json = {
                         "Title" : sub,
                         "Details" : edu.description
