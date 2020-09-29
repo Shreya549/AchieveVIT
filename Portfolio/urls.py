@@ -7,8 +7,8 @@ router = SimpleRouter()
 router.register('education', EducationViewSet, basename="education")
 router.register('experience', WorkExperienceViewSet, basename="experience")
 router.register('achievements', AchievementsViewSet, basename="achievements")
-router.register('viewEducation', EducationRetrieveView, basename = 'viewEducation')
-router.register('viewExperience', WorkExperienceRetrieveView, basename = 'viewExperience')
-router.register('viewAchievements', AchievementsRetrieveView, basename = 'viewAchievements')
+router.register('viewEducation/', EducationRetrieveView, basename = 'viewEducation')
+router.register('viewExperience/', WorkExperienceRetrieveView, basename = 'viewExperience')
+router.register('viewAchievements/', AchievementsRetrieveView, basename = 'viewAchievements')
 
 urlpatterns = router.urls

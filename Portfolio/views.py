@@ -75,8 +75,11 @@ class EducationRetrieveView(viewsets.ModelViewSet):
 
     def get_queryset(self):
         fk = self.request.GET.get('empid')
+        print('1')
         owner = FacultyProfile.objects.get(pk = fk).owner
+        print ('2')
         query = Education.objects.get(owner = owner)
+        print('3')
         return query
 
 class WorkExperienceRetrieveView(viewsets.ModelViewSet):
