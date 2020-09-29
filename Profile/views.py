@@ -36,4 +36,7 @@ class HRProfileView(viewsets.ModelViewSet):
         return self.update(request, *args, **kwargs)
 
 
+class ProfileRetrieveView(generics.RetrieveAPIView):
+    queryset = FacultyProfile.objects.all()
+    serializer_class = FacultyProfileSerializer
         
