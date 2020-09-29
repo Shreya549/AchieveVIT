@@ -21,6 +21,7 @@ class ViewFeed(APIView):
                 type = query.type
                 fk = query.fk
                 print(query)
+                print (type)
                 if (type == 'Education'):
                     edu = Education.objects.get(pk=fk)
                     print ("Edu")
@@ -40,7 +41,7 @@ class ViewFeed(APIView):
 
                 elif (type == 'Experience'):
                     edu = WorkExperience.objects.get(pk=fk)
-
+                    print(edu)
                     owner = edu.owner
                     name = FacultyProfile.objects.get(pk = owner).name
                     sub = name + " updated their Work Experience."
@@ -52,12 +53,12 @@ class ViewFeed(APIView):
                         "Work description" : edu.description,
                         "period" : edu.period
                     }
-
+                    print (json)
                     ans.append(json)
 
                 elif (type == 'Achievements'):
                     edu = Achievements.objects.get(pk=fk)
-
+                    print (edu)
                     owner = edu.owner
                     name = FacultyProfile.objects.get(pk = owner).name
                     sub = name + " added an Achievement."
@@ -66,7 +67,7 @@ class ViewFeed(APIView):
                         "Title" : sub,
                         "Details" : edu.description
                     }
-
+                    print (json)
                     ans.append(json)
                 
             return Response({"feed" : ans}, status = 200)
