@@ -66,7 +66,7 @@ class ViewFeed(APIView):
                     print (name)
                     json = {
                         "Title" : sub,
-                        "Details" : edu.description
+                        "Details" : edu.details
                     }
                     print (json)
                     ans.append(json)
