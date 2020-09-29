@@ -31,6 +31,7 @@ class ViewFeed(APIView):
                     sub = name + " updated their Education."
 
                     json = {
+                        "uuid" : query.uuid,
                         "Title" : sub,
                         "University" : edu.university,
                         "Degree" : edu.degree,
@@ -49,6 +50,7 @@ class ViewFeed(APIView):
                     sub = name + " updated their Work Experience."
 
                     json = {
+                        "uuid" : query.uuid,
                         "Title" : sub,
                         "Position" : edu.position,
                         "Company" : edu.comp_name,
@@ -68,6 +70,7 @@ class ViewFeed(APIView):
                     sub = name + " added an Achievement."
                     # print (name)
                     json = {
+                        "uuid" : query.uuid,
                         "Title" : sub,
                         "Details" : edu.details,
                         "Likes" : query.likes
@@ -79,3 +82,14 @@ class ViewFeed(APIView):
 
         except:
             return Response({"feed" : "Error reaching Servers"}, status = 404)
+
+
+class LikeView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        uuid = self.request.data["uuid"]
+        feed = Feed.objects.get(pk = uuid)
+        feed.likes += 1
+        feed.save()
+         
