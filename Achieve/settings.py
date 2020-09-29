@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'Accounts',
     'Profile',
-    'Portfolio'
+    'Portfolio',
+    'Feed'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions, generics
 from .serializers import EducationSerializer, WorkExperienceSerializer, AchievementsSerializer
 from .models import Education, WorkExperience, Achievements
+from Feed.models import Feed
 
 # Create your views here.
 class EducationViewSet(viewsets.ModelViewSet):
@@ -14,6 +15,12 @@ class EducationViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner = self.request.user)
+
+        feed = Feed.objects.create(
+            fk = serializer.data['uuid'],
+            type = 'Education'
+        )
+        feed.save()
 
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
@@ -30,6 +37,12 @@ class WorkExperienceViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner = self.request.user)
 
+        feed = Feed.objects.create(
+            fk = serializer.data['uuid'],
+            type = 'Experience'
+        )
+        feed.save()
+
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
         return self.update(request, *args, **kwargs)
@@ -44,6 +57,12 @@ class AchievementsViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner = self.request.user)
+
+        feed = Feed.objects.create(
+            fk = serializer.data['uuid'],
+            type = 'Achievements'
+        )
+        feed.save()
 
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
