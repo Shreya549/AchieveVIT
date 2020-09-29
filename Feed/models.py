@@ -9,4 +9,5 @@ class Feed(models.Model):
     fk = models.UUIDField()
     type = models.CharField(max_length = 100)
     timestamp = models.DateTimeField(auto_now_add=True)
+    likes = models.IntegerField(default=0)
 

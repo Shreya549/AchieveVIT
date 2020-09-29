@@ -7,6 +7,7 @@ from Portfolio.models import Education, WorkExperience, Achievements
 from Profile.models import FacultyProfile
 from Accounts.models import Faculty
 # Create your views here.
+
 class ViewFeed(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
@@ -15,16 +16,16 @@ class ViewFeed(APIView):
             feed = Feed.objects.all().order_by('-timestamp')
             l = len(feed)
             ans = []
-            print (feed)
+            # print (feed)
             for i in range(l):
                 query = feed[i]
                 type = query.type
                 fk = query.fk
-                print(query)
-                print (type)
+                # print(query)
+                # print (type)
                 if (type == 'Education'):
                     edu = Education.objects.get(pk=fk)
-                    print ("Edu")
+                    # print ("Edu")
                     owner = edu.owner
                     name = Faculty.objects.get(pk = owner).name
                     sub = name + " updated their Education."
@@ -34,14 +35,15 @@ class ViewFeed(APIView):
                         "University" : edu.university,
                         "Degree" : edu.degree,
                         "From" : edu.start_year,
-                        "To" : edu.end_year
+                        "To" : edu.end_year,
+                        "Likes" : query.likes
                     }
-                    print (json)
+                    # print (json)
                     ans.append(json)
 
                 elif (type == 'Experience'):
                     edu = WorkExperience.objects.get(pk=fk)
-                    print(edu)
+                    # print(edu)
                     owner = edu.owner
                     name = Faculty.objects.get(pk = owner).name
                     sub = name + " updated their Work Experience."
@@ -51,24 +53,26 @@ class ViewFeed(APIView):
                         "Position" : edu.position,
                         "Company" : edu.comp_name,
                         "Work description" : edu.description,
-                        "period" : edu.period
+                        "period" : edu.period,
+                        "Likes" : query.likes
                     }
-                    print (json)
+                    # print (json)
                     ans.append(json)
 
                 elif (type == 'Achievements'):
                     edu = Achievements.objects.get(pk=fk)
-                    print (edu)
+                    # print (edu)
                     owner = edu.owner
-                    print (owner)
+                    # print (owner)
                     name = Faculty.objects.get(pk = owner).name
                     sub = name + " added an Achievement."
-                    print (name)
+                    # print (name)
                     json = {
                         "Title" : sub,
-                        "Details" : edu.details
+                        "Details" : edu.details,
+                        "Likes" : query.likes
                     }
-                    print (json)
+                    # print (json)
                     ans.append(json)
                 
             return Response({"feed" : ans}, status = 200)
