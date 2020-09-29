@@ -92,4 +92,5 @@ class LikeView(APIView):
         feed = Feed.objects.get(pk = uuid)
         feed.likes += 1
         feed.save()
+        return Response(status = 202)
          
