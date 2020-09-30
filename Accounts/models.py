@@ -149,3 +149,9 @@ class HR(User, PermissionsMixin):
 
     def __str__(self):
         return self.name
+
+class OTPStore(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, primary_key = True)
+    email = models.EmailField()
+    otp = models.CharField(max_length = 8)
+    timestamp = models.DateTimeField()

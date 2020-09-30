@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import User, Faculty, HR
+from .models import User, Faculty, HR, OTPStore
 from django.contrib.auth import authenticate, password_validation
 
 from rest_framework.response import Response
@@ -103,3 +103,9 @@ class UserLoginSerializer(serializers.Serializer):
             'token': user.token,
             'ac_type' : ac_type
         }
+
+class OTPStoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OTPStore
+        fields = '__all__'
+        read_only_fields = '__all__'
