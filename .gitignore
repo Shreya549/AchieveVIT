@@ -112,7 +112,7 @@ celerybeat.pid
 # Environments
 
 .venv
-env/
+Accounts.env
 venv/
 ENV/
 env.bak/
