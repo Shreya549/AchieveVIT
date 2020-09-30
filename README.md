@@ -2,7 +2,9 @@
 Backend of a portal that connects the Faculties to the HR Department of VIT, Vellore to ensure that the HRs have an updated knowledge of the professional life of the Faculties, so that they can help out better.
 <br>
 
-<img src = https://github.com/Shreya549/AchieveVIT/blob/master/homepage.png width = 80%>
+<img src = https://github.com/Shreya549/AchieveVIT/blob/master/homepage.png width = 80%/>
+
+
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Shreya549/AchieveVIT?logo=github&style=social)](https://github.com/Shreya548/) [![GitHub last commit](https://img.shields.io/github/last-commit/Shreya549/AchieveVIT?style=social&logo=git)](https://github.com/Shreya549/) [![GitHub stars](https://img.shields.io/github/stars/Shreya549/AchieveVIT?style=social)](https://github.com/Shreya549/AchieveVIT/stargazers) [![GitHub forks](https://img.shields.io/github/forks/Shreya549/AchieveVIT?style=social&logo=git)](https://github.com/Shreya549/AchieveVIT/network)
 
 
