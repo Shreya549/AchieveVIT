@@ -102,6 +102,7 @@ class OTPCheckView(APIView):
     def post(self, request):
         email = request.data['email'] 
         otp = request.data['otp']
+        password = request.data['password']
         query = OTPStore.objects.filter(email = email, otp = otp).order_by('-timestamp')
         if (query.exists()):
             timestamp = query.values_list('timestamp', flat=True)[0]
@@ -109,12 +110,14 @@ class OTPCheckView(APIView):
             duration_in_s = duration.total_seconds()
             minutes = divmod(duration_in_s, 60)[0]
             if (minutes<=5):
-                return Response({"message" : "OTP Verified"}, status = 200)
+                user = User.objects.get(email = email)
+                user.set_password(password)
+                user.save()
+                return Response({'message' : 'Password changed successfully'}, status = 200)
             else:
-                return Response({"message" : "Time Out"}, status = 400)
-
+                return Response({'message' : 'Time Out'}, status = 400)
         else:
-            return Response({"message" : "OTP does not exist"}, status = 404)
+            return Response({'message' : 'Wrong OTP'}, status = 400)
 
 class ChangePasswordView(UpdateAPIView):
         """
@@ -142,8 +145,7 @@ class ChangePasswordView(UpdateAPIView):
                 response = {
                     'status': 'success',
                     'code': status.HTTP_200_OK,
-                    'message': 'Password updated successfully',
-                    'data': []
+                    'message': 'Password updated successfully'
                 }
 
                 return Response(response)
