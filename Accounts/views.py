@@ -25,7 +25,7 @@ env = environ.Env(
 )
 environ.Env.read_env()
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "try.settings.local")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Achieve.settings.local")
 SENDGRID_API_KEY = env('SENDGRID_API_KEY')
 
 # Create your views here.
