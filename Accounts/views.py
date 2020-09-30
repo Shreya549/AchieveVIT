@@ -90,7 +90,7 @@ class OTPVerification(APIView):
         
         msg = message
         message = Mail(
-            from_email='shreya.chatterjee2018@vitstudent.ac.in',
+            from_email='achieve.vit@gmail.com',
             to_emails=sendto_email,
             subject=subject,
             html_content=msg)
